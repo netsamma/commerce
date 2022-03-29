@@ -1,0 +1,19 @@
+.main{
+  display: flex;
+  flex-direction: row;
+}
+
+.left{
+  width: 60%;
+  background-color: rgb(201, 241, 156);
+}
+.right{
+  width: 40%;
+  background-color: rgb(221, 156, 145);
+}
+
+.product-card{
+  background-color: aqua;
+  padding: 20px;
+  margin: 10px;
+}
