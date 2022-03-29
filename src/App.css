@@ -3,11 +3,11 @@
   flex-direction: row;
 }
 
-.left{
+.products_wrapper{
   width: 60%;
   background-color: rgb(201, 241, 156);
 }
-.right{
+.cart_wrapper{
   width: 40%;
   background-color: rgb(221, 156, 145);
 }
