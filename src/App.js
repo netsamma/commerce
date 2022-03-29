@@ -5,13 +5,14 @@ import axios from 'axios';
 import { BrowserRouter } from 'react-router-dom';
 import { config } from './config/config.js';
 import Cart from './components/Cart';
+// import User from './components/User';
 
 function App() {
 
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
-  const [posts, setPosts] = useState([]);
-  const [cartItems, setCartItems] = useState([{name:"Scarpe",price:20,qty:1}]);
+  // const [users, setUsers] = useState([]);
+  const [cartItems, setCartItems] = useState([{title:"Scarpe in pelle", price:20, qty:1}]);
 
   // Aggiunta al carrello
   const onAdd = (product) => {
@@ -43,20 +44,19 @@ function App() {
 
   useEffect(
     () => {
-      console.log(config);
-      loadPost();
+      loadUsers();
     }, []
   )
 
-  const loadPost = async () => {
+  const loadUsers = async () => {
   
     setLoading(true);
 
     // Await make wait until that promise settles and return its result
-    const response = await axios.get(config.apiUrl);
+    const response = await axios.get(config.productsFakeUrl);
 
     // After fetching data stored it in posts state.
-    setPosts(response.data);
+    setProducts(response.data);
 
     // Closed the loading page
     setLoading(false);
@@ -70,7 +70,8 @@ function App() {
           <NavBar />
           <div className='main'>
             <div className='products_wrapper'>
-              {/* Product SPRING REST*/}
+              
+              {/* SPRING REST - Product */}
               {/* {loading ? (
                   <h4>Loading...</h4>) :
                   (posts.map((item) =>
@@ -83,17 +84,22 @@ function App() {
                 )
               } */}
 
-              {/* Users  JSON*/}
+              {/* FakeStoreApi - Product */}
               {loading ? (
                   <h4>Loading...</h4>) :
-                  (posts.map((item) =>
+                  (products.map((item) =>
                     <div className= "product-card" key={item.id}>
-                      <h4 className="product-title">{item.name}</h4>
-                      <p className="product-quantity"> {item.username}</p>
-                      <p className="product-price" > {item.email}</p>
+                      <h4 className="product-title">{item.title}</h4>
+                      <p className="product-price" > € {item.price}</p>
+                      <button>Aggiungi</button>
                     </div>
                   )
                 )
+              }
+
+              {/* JSON placeholder - Users */}
+              {
+                //loading ? ( <h4>Loading...</h4> ) : users.map((item) => <User {...item} />)
               }
 
             </div>

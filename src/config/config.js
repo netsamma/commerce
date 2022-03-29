@@ -1,4 +1,5 @@
 export const config = {  
-	//apiUrl: 'http://192.168.10.79:8080/products',
-	apiUrl: 'https://jsonplaceholder.typicode.com/users/',
+	productsSpringApiUrl: 'http://192.168.10.79:8080/products',
+	productsFakeUrl: 'https://fakestoreapi.com/products/',
+	usersFakeUrl: 'https://jsonplaceholder.typicode.com/users/',
 };
