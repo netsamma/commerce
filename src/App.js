@@ -5,22 +5,23 @@ import axios from 'axios';
 import { BrowserRouter } from 'react-router-dom';
 import { config } from './config/config.js';
 import Cart from './components/Cart';
-// import User from './components/User';
+import Product from './components/Product';
+
 
 function App() {
 
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
-  // const [users, setUsers] = useState([]);
-  const [cartItems, setCartItems] = useState([{title:"Scarpe in pelle", price:20, qty:1}]);
+  const [cartItems, setCartItems] = useState([]);
 
-  // Aggiunta al carrello
+  // Aggiunta prodotto al carrello
   const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist) {
+    const productInCart = cartItems.find((x) => x.id === product.id);
+    console.log(productInCart);
+    if (productInCart) {
       setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+        cartItems.map((cartItem) =>
+          cartItem.id === product.id ? { ...productInCart, qty: productInCart.qty + 1 } : cartItem
         )
       );
     } else {
@@ -44,11 +45,11 @@ function App() {
 
   useEffect(
     () => {
-      loadUsers();
+      loadProducts();
     }, []
   )
 
-  const loadUsers = async () => {
+  const loadProducts = async () => {
   
     setLoading(true);
 
@@ -56,12 +57,14 @@ function App() {
     const response = await axios.get(config.productsFakeUrl);
 
     // After fetching data stored it in posts state.
-    setProducts(response.data);
+    if(response.status === 200)
+      setProducts(response.data);
 
     // Closed the loading page
     setLoading(false);
   }
 
+  
 
   return (
     <>
@@ -70,45 +73,15 @@ function App() {
           <NavBar />
           <div className='main'>
             <div className='products_wrapper'>
-              
-              {/* SPRING REST - Product */}
-              {/* {loading ? (
-                  <h4>Loading...</h4>) :
-                  (posts.map((item) =>
-                    <div className= "product-card" key={item.product_id}>
-                      <h4 className="product-title">{item.name}</h4>
-                      <p className="product-quantity"> {item.quantity_in_stock}</p>
-                      <p className="product-price" > {item.unit_price}</p>
-                    </div>
-                  )
-                )
-              } */}
-
-              {/* FakeStoreApi - Product */}
               {loading ? (
                   <h4>Loading...</h4>) :
-                  (products.map((item) =>
-                    <div className= "product-card" key={item.id}>
-                      <h4 className="product-title">{item.title}</h4>
-                      <p className="product-price" > € {item.price}</p>
-                      <button>Aggiungi</button>
-                    </div>
+                  (products.map((item) => <Product key={item.id} item={item} onAdd={onAdd}/>
                   )
                 )
               }
-
-              {/* JSON placeholder - Users */}
-              {
-                //loading ? ( <h4>Loading...</h4> ) : users.map((item) => <User {...item} />)
-              }
-
             </div>
             <div className='cart_wrapper'>
-              <Cart
-                cartItems={cartItems}
-                onAdd={onAdd}
-                onRemove={onRemove}>
-              </Cart>
+              <Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}></Cart>
             </div>
           </div>
         </BrowserRouter>

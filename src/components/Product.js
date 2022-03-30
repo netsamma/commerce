@@ -1,0 +1,24 @@
+import React from 'react'
+
+function Product(props) {
+  return (
+	<div className= "product-card">
+		<h4 className="product-title">{props.item.title}</h4>
+		<p className="product-price" > € {props.item.price}</p>
+		<button onClick={() => props.onAdd(props.item)}>Aggiungi</button>
+	</div>
+  )
+
+//  return(
+// 	{/* SPRING REST - Product */}
+// 	<div> 
+// 	  <div className= "product-card" key={props.item.product_id}>
+// 	  <h4 className="product-title">{props.item.name}</h4>
+// 	  <p className="product-quantity"> {props.item.quantity_in_stock}</p>
+// 	  <p className="product-price" > {props.item.unit_price}</p>
+// 	</div>
+//   )
+	            
+}
+
+export default Product

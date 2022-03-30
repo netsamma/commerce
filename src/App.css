@@ -1,3 +1,12 @@
+:root{
+  --mainBlue: #498197;
+  --lightBlue: #bfe6fd;
+  --lightYellow: #fffae1;
+  --lightYellow2: #f2e3ab;
+  --peach: #FCEDDA;
+  --burntOrange: #EE4E34;
+}
+
 .main{
   display: flex;
   flex-direction: row;
@@ -5,15 +14,16 @@
 
 .products_wrapper{
   width: 60%;
-  background-color: rgb(201, 241, 156);
+  background: var(--peach);
 }
 .cart_wrapper{
   width: 40%;
-  background-color: rgb(221, 156, 145);
+  background: var(--lightBlue);
 }
 
 .product-card{
-  background-color: aqua;
-  padding: 20px;
-  margin: 10px;
+  padding: 30px;
+  margin: 30px;
+  background: var(--lightYellow2);
+  border-radius: 20px;
 }

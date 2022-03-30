@@ -2,9 +2,10 @@ import React from 'react';
 import './Cart.css'
 
 function Cart(props) {
+  // console.log(props.cartItems);
   const { cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
-  const taxPrice = itemsPrice * 0.14;
+  const taxPrice = itemsPrice * 0.22;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
   return (
@@ -14,13 +15,11 @@ function Cart(props) {
         {cartItems.length === 0 && <div>Carrello vuoto</div>}
         {cartItems.map((item) => (
           <div key={item.id} className="item_row">
-            <div className='item'><b>{item.title}</b> {item.qty} x ${item.price.toFixed(2)} </div>
-            <button onClick={() => onRemove(item)} className="remove">
-                -
-            </button>{' '}
-            <button onClick={() => onAdd(item)} className="add">
-                +
-            </button>
+            <div> {item.title} </div>
+            <div> {item.qty} x € {item.price.toFixed(2)} </div>
+            <button onClick={() => onRemove(item)} className="remove"> - </button>
+            {' '}
+            <button onClick={() => onAdd(item)} className="add"> + </button>
           </div>
         ))}
 
