@@ -17,7 +17,6 @@ function App() {
   // Aggiunta prodotto al carrello
   const onAdd = (product) => {
     const productInCart = cartItems.find((x) => x.id === product.id);
-    console.log(productInCart);
     if (productInCart) {
       setCartItems(
         cartItems.map((cartItem) =>
@@ -49,39 +48,37 @@ function App() {
     }, []
   )
 
-  const loadProducts = async () => {
-  
-    setLoading(true);
 
+  const loadProducts = async () => {
+    setLoading(true);
     // Await make wait until that promise settles and return its result
     const response = await axios.get(config.productsFakeUrl);
-
     // After fetching data stored it in posts state.
-    if(response.status === 200)
+    if(response.status === 200){
+      console.log(response.data);
       setProducts(response.data);
-
+    }  
     // Closed the loading page
     setLoading(false);
   }
 
   
-
   return (
     <>
       <div className="App">
         <BrowserRouter>
-          <NavBar />
+          <NavBar cartItems = {cartItems}/>
           <div className='main'>
             <div className='products_wrapper'>
               {loading ? (
                   <h4>Loading...</h4>) :
-                  (products.map((item) => <Product key={item.id} item={item} onAdd={onAdd}/>
+                  (products.map((item) => <Product key={item.id} item={item} onAdd={onAdd} />
                   )
                 )
               }
             </div>
             <div className='cart_wrapper'>
-              <Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}></Cart>
+              <Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />
             </div>
           </div>
         </BrowserRouter>

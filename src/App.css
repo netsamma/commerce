@@ -1,8 +1,9 @@
 :root{
-  --mainBlue: #498197;
-  --lightBlue: #bfe6fd;
+  --mainBlue: #2a2a77;
+  --lightBlue: #b5dcf5;
+  --mainWhite: #f3f3f3;
+  --mainDark: #252528;
   --lightYellow: #fffae1;
-  --lightYellow2: #f2e3ab;
   --peach: #FCEDDA;
   --burntOrange: #EE4E34;
 }
@@ -13,17 +14,32 @@
 }
 
 .products_wrapper{
-  width: 60%;
+  width: 70%;
   background: var(--peach);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 .cart_wrapper{
-  width: 40%;
+  width: 30%;
   background: var(--lightBlue);
 }
 
 .product-card{
+  display: flex;
+  flex-direction: column;
   padding: 30px;
   margin: 30px;
-  background: var(--lightYellow2);
+  background: var(--mainWhite);
   border-radius: 20px;
 }
+
+.product-button{
+  margin-top: auto;
+	border: none;
+	background-color:skyblue;
+	padding: 20px;
+	font-family: "Arial";
+	font-size: 15px;
+	cursor: pointer;
+	border-radius: 10px;
+};

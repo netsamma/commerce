@@ -3,6 +3,7 @@
 	height: 80px;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 
 }
 
@@ -10,4 +11,18 @@
 	color:azure;
 	margin: 0 40px;
 	text-decoration: none;
+}
+
+.cart-icon{
+	height: 50px;
+}
+
+.badge-notify{
+    background: #EE4E34;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+    position:relative;
+    top: -28px;
+    left: -5px;
 }
