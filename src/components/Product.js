@@ -11,13 +11,13 @@ function Product(props) {
   )
 
 //  return(
-// 	{/* SPRING REST - Product */}
-// 	<div> 
-// 	  <div className= "product-card" key={props.item.product_id}>
-// 	  <h4 className="product-title">{props.item.name}</h4>
-// 	  <p className="product-quantity"> {props.item.quantity_in_stock}</p>
-// 	  <p className="product-price" > {props.item.unit_price}</p>
-// 	</div>
+	// 	{/* SPRING REST - Product */}
+	// <div className= "product-card" key={props.item.product_id}>
+	//   <h4 className="product-title">{props.item.name}</h4>
+ 	//   <p className="product-quantity"> {props.item.quantity_in_stock}</p>
+ 	//   <p className="product-price" > {props.item.unit_price}</p>
+	//   <button className='product-button' onClick={() => props.onAdd(props.item)}>Aggiungi</button>
+	// </div>
 //   )
 	            
 }

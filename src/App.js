@@ -55,13 +55,11 @@ function App() {
     const response = await axios.get(config.productsFakeUrl);
     // After fetching data stored it in posts state.
     if(response.status === 200){
-      console.log(response.data);
       setProducts(response.data);
     }  
     // Closed the loading page
     setLoading(false);
   }
-
   
   return (
     <>
