@@ -4,6 +4,7 @@ import React from 'react'
 function Product(props) {
   return (
 	<div className= "product-card">
+		<img className="product-image" src={props.item.image}  />
 		<h4 className="product-title">{props.item.title}</h4>
 		<p className="product-price" > € {props.item.price}</p>
 		<button className='product-button' onClick={() => props.onAdd(props.item)}>Aggiungi</button>
