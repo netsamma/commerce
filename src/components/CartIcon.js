@@ -10,7 +10,7 @@ function CartIcon(props) {
   return (
     <div className='navbar-button'>
       <span className={numbOfItems !== 0 ? "badge-notify" : ""}>
-        {numbOfItems !== 0? numbOfItems:""}
+        {numbOfItems !== 0 ? numbOfItems : ""}
       </span>
       <img className='cart-icon' src={image} alt="" />
     </div>

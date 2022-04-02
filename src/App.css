@@ -22,6 +22,7 @@
 .cart_wrapper{
   width: 30%;
   background: var(--lightBlue);
+  padding: 30px;
 }
 
 .product-card{
@@ -47,3 +48,46 @@
 	cursor: pointer;
 	border-radius: 10px;
 };
+
+
+.item_row{
+	margin-bottom: 10px;
+}
+
+.item{
+	margin-right: 20px;
+}
+
+
+.navbar{
+	background: black;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-button {
+    color: azure;
+    margin: 0 40px;
+    text-decoration: none;
+}
+
+.cart-wrapper{
+  padding: 20px;
+}
+
+.cart-icon{
+	height: 60px;
+	
+}
+
+.badge-notify{
+  background: #EE4E34;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+  position:relative;
+  top: -28px;
+  left: -5px;
+}

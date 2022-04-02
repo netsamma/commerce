@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import "./App.css";
-import NavBar from "./components/NavBar"
 import axios from 'axios';
 import { BrowserRouter } from 'react-router-dom';
 import { config } from './config/config.js';
 import Cart from './components/Cart';
 import Product from './components/Product';
+import NavBar from './components/NavBar';
 
 
 function App() {

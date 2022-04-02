@@ -1,15 +1,13 @@
-import React from 'react';
-import './Cart.css'
+import React from 'react'
 
 function Cart(props) {
-  // console.log(props.cartItems);
   const { cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const taxPrice = itemsPrice * 0.22;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
   return (
-    <aside className="cart">
+    <div className="cart">
       <h2>Carrello</h2>
       <div>
         {cartItems.length === 0 && <div>Carrello vuoto</div>}
@@ -46,7 +44,7 @@ function Cart(props) {
           </>
         )}
       </div>
-    </aside>
+    </div>
   );
 }
 
