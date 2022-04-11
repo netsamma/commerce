@@ -13,13 +13,13 @@ function App() {
   const {products, loading} = useProducts()
   return (
     <div className="App">
-      {/* <BrowserRouter> */}
-        {/* <NavBar cartItems={cartItems} numbOfCartItems={numbOfCartItems}/> */}
+      <BrowserRouter>
+        <NavBar cartItems={cartItems} numbOfCartItems={numbOfCartItems}/>
         <div className="main">
           <Products products={products} loading={loading} onAdd={onAdd}/>
           <Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}/>
         </div>
-      {/* </BrowserRouter> */}
+      </BrowserRouter>
     </div>
 
   )
