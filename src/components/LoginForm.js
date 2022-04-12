@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Login() {
+function LoginForm() {
   return (
 	<div>
 		<form>
@@ -11,4 +11,4 @@ function Login() {
   )
 }
 
-export default Login
+export default LoginForm

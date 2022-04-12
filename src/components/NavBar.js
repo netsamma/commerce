@@ -4,14 +4,16 @@ import CartIcon from './CartIcon'
 
 
 function Navbar(props) {
-  console.log(props);
   return (
-    <div className='navbar'>
+     <div className='navbar'>
       <Link to="/" className="navbar-button">
         Home
       </Link>
-      <Link to="/" className="navbar-button">
-        <CartIcon cartItems={props.cartItems} numbOfCartItems={props.numbOfCartItems}/>
+      <Link to="/login" className="navbar-button">
+        Login
+      </Link>
+      <Link to="/cart" className="navbar-button">
+        <CartIcon numbOfCartItems={props.numbOfCartItems}/>
       </Link>
     </div>
   );
