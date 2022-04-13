@@ -13,8 +13,12 @@ function Home() {
 		<>
 			<Navbar numbOfCartItems={numbOfCartItems}/>
 			<div className="main">
-				<Products products={products} loading={loading} onAdd={onAdd}/>
-				<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}/>
+				<div className="products-wrapper">
+					<Products products={products} loading={loading} onAdd={onAdd}/>
+				</div>
+				<div className="cart-wrapper">
+					<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}/>
+				</div>			
 			</div>
 		</>
 	)

@@ -13,16 +13,11 @@
   flex-direction: row;
 }
 
-.products_wrapper{
+.products-wrapper{
   width: 70%;
   background: var(--peach);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-}
-.cart_wrapper{
-  width: 30%;
-  background: var(--lightBlue);
-  padding: 30px;
 }
 
 .product-card{
@@ -33,6 +28,13 @@
   background: var(--mainWhite);
   border-radius: 20px;
 }
+.cart-wrapper{
+  width: 30%;
+  background: var(--lightBlue);
+  padding: 30px;
+}
+
+
 
 .product-image{
   width: 100%;
@@ -78,7 +80,7 @@
 }
 
 .cart-icon{
-	height: 60px;
+	height: 50px;
 	
 }
 
