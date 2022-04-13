@@ -2,7 +2,6 @@ import React from 'react'
 import Navbar from '../components/NavBar'
 import Products from '../components/Products';
 import Cart from '../components/Cart';
-import useCart from '../hooks/useCart';
 import useProducts from '../hooks/useProducts';
 
 function Home(props) {
