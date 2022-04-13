@@ -5,7 +5,6 @@ import { config } from '../config/config.js';
 const useProducts = () => {
 	const [loading, setLoading] = useState(false);
 	const [products, setProducts] = useState([]);
-	
 
 	useEffect(
 		() => {
