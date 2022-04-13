@@ -15,7 +15,9 @@ const useProducts = () => {
 	
 	const loadProducts = async () => {
 		setLoading(true);
+		// const response = await axios.get(config.productsSpringApiUrl);
 		const response = await axios.get(config.productsFakeUrl);
+		
 		if(response.status === 200){
 		  setProducts(response.data);
 		}  

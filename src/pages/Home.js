@@ -5,19 +5,18 @@ import Cart from '../components/Cart';
 import useCart from '../hooks/useCart';
 import useProducts from '../hooks/useProducts';
 
-function Home() {
-	const {cartItems, numbOfCartItems, onAdd, onRemove} = useCart()
+function Home(props) {
 	const {products, loading} = useProducts()
 	
 	return (
 		<>
-			<Navbar numbOfCartItems={numbOfCartItems}/>
+			<Navbar numbOfCartItems={props.numbOfCartItems}/>
 			<div className="main">
 				<div className="products-wrapper">
-					<Products products={products} loading={loading} onAdd={onAdd}/>
+					<Products products={products} loading={loading} onAdd={props.onAdd}/>
 				</div>
 				<div className="cart-wrapper">
-					<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}/>
+					<Cart cartItems={props.cartItems} onAdd={props.onAdd} onRemove={props.onRemove}/>
 				</div>			
 			</div>
 		</>

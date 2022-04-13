@@ -9,6 +9,9 @@ function Navbar(props) {
       <Link to="/" className="navbar-button">
         Home
       </Link>
+      <Link to="/dashboard" className="navbar-button">
+        Dashboard
+      </Link>
       <Link to="/login" className="navbar-button">
         Login
       </Link>

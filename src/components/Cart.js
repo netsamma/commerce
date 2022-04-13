@@ -11,7 +11,7 @@ function Cart(props) {
       <div className="cart">
         {props.cartItems.length === 0 && <div>Carrello vuoto</div>}
         {props.cartItems.map((item) => (
-          <div key={item.id} className="item_row">
+          <div key={item.product_id} className="item_row">
             <div> {item.title} </div>
             <div> {item.qty} x € {item.price.toFixed(2)} </div>
             <button onClick={() => props.onRemove(item)} className="remove"> - </button>

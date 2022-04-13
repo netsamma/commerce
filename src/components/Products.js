@@ -5,7 +5,7 @@ function Products(props) {
 		<>
 			{props.loading ? (
 				<h4>Loading...</h4>) :
-				(props.products.map((item) => <Product key={item.id} product={item} onAdd={props.onAdd}/>
+				(props.products.map((item) => <Product key={item.product_id} product={item} onAdd={props.onAdd}/>
 				)
 			)
 			}

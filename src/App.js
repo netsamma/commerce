@@ -4,18 +4,22 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import CartPage from './pages/CartPage';
+import Dashboard from './pages/Dashboard';
+import useCart from './hooks/useCart';
 
 function App() {
+  const {cartItems, numbOfCartItems, onAdd, onRemove} = useCart()
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home/>}>
+        <Route path='/' element={<Home numbOfCartItems={numbOfCartItems} cartItems={cartItems} onAdd={onAdd}/>}>
         </Route>
         <Route path='/login' element={<LoginPage />}>
         </Route>
         <Route path='/cart' element={<CartPage />}>
         </Route>
-        <Route path='/dashboard'>
+        <Route path='/dashboard' element={<Dashboard numbOfCartItems={numbOfCartItems}/>}>
         </Route>
       </Routes>  
     </BrowserRouter>
