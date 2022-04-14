@@ -16,7 +16,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Home numbOfCartItems={numbOfCartItems} cartItems={cartItems} onAdd={onAdd}/>
+            <Home numbOfCartItems={numbOfCartItems} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}/>
           }
         > 
         </Route>

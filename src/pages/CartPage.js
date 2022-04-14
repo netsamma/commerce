@@ -6,14 +6,12 @@ function CartPage(props) {
   return (
     <>
       <Navbar numbOfCartItems={props.numbOfCartItems} />
-      <div className="main">
-        <div className="login-form-wrapper">
+      <div className="cart-wrapper">
           <Cart
             cartItems={props.cartItems}
             onAdd={props.onAdd}
             onRemove={props.onRemove}
           />
-        </div>
       </div>
     </>
   );

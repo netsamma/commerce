@@ -1,23 +1,36 @@
-import React, { useRef, useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useRef, useState } from 'react'
 
 function LoginForm() {
 	const [username, setUserName] = useState();
 	const [password, setPassword] = useState();
+	const [success, setSuccess] = useState(false);
 	const usernameRef = useRef()
 	const passwordRef = useRef()
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-		const token = await loginUser({
-		  username,
-		  password
-		});
-		// setToken(token);
+		try {
+			const response = await axios.post(
+				'http://localhost:8080/login',
+				JSON.stringify({username, password})
+			)
+			setSuccess(true);
+			// setToken(token);
+			console.log(response.data.token);
+		} catch (error) {
+			
+		}
+		
 	}
+
+	useEffect(() => {
+		usernameRef.current.focus()
+	},[])
 	
 	return(
 	  <div className="login-wrapper">
-		<h1>Please Log In</h1>
+		<h1>Accedi</h1>
 		<form onSubmit={handleSubmit}>
 		  	<label htmlFor='username'>Username</label>
 			<input 
@@ -37,24 +50,11 @@ function LoginForm() {
 				required
 			/>
 		  	<button>Login</button>
-			  <p>
-				  <a href="#">Registrati</a>
-			  </p>
+			<p><a href="/signup">Registrati</a></p>
 		</form>
 	  </div>
 	)
   }
   
-async function loginUser(credentials) {
-	return fetch('http://localhost:8080/login', {
-	  method: 'POST',
-	  headers: {
-		'Content-Type': 'application/json'
-	  },
-	  body: JSON.stringify(credentials)
-	})
-	  .then(data => data.json())
-}
-
 
 export default LoginForm

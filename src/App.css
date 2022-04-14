@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box
+}
+
 :root{
   --mainBlue: #2a2a77;
   --lightBlue: #b5dcf5;
@@ -17,7 +21,7 @@
   width: 70%;
   background: var(--peach);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .product-card{
@@ -28,12 +32,6 @@
   background: var(--mainWhite);
   border-radius: 20px;
 }
-.cart-wrapper{
-  width: 30%;
-  background: var(--lightBlue);
-  padding: 30px;
-}
-
 
 
 .product-image{
@@ -77,11 +75,13 @@
 
 .cart-wrapper{
   padding: 20px;
+  width: 30%;
+  background: var(--lightBlue);
+  padding: 30px;
 }
 
 .cart-icon{
 	height: 50px;
-	
 }
 
 .badge-notify{
@@ -92,4 +92,16 @@
   position:relative;
   top: -28px;
   left: -5px;
+}
+
+.login-wrapper{
+  margin: auto;
+  width: 350px;
+}
+
+.login-wrapper input, .login-wrapper button{
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1.2rem;
 }

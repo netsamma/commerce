@@ -6,11 +6,8 @@ function LoginPage(props) {
   return (
 	<>
 		<Navbar numbOfCartItems={props.numbOfCartItems}/>
-		<div className="main">
-			<div className="login-form-wrapper">
-				<LoginForm/>
-			</div>
-		</div>
+		<LoginForm/>
+
 	</>
   )
 }
