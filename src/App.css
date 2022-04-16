@@ -18,7 +18,7 @@
 }
 
 .products-wrapper{
-  width: 70%;
+  width: 75%;
   background: var(--peach);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   padding: 30px;
-  margin: 30px;
+  margin: 20px;
   background: var(--mainWhite);
   border-radius: 20px;
 }
@@ -69,13 +69,24 @@
 
 .navbar-button {
     color: azure;
-    margin: 0 40px;
+    margin: 0 10px;
     text-decoration: none;
+}
+
+.navbar-search {
+  height: 50%;
+  margin: 0 10px;
+  flex: 1;
+  font-size: 1.2em;
+  padding: 10px;  
+}
+.navbar-icon {
+  margin: 0 20px;  
 }
 
 .cart-wrapper{
   padding: 20px;
-  width: 30%;
+  width: 25%;
   background: var(--lightBlue);
   padding: 30px;
 }

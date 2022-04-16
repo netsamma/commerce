@@ -6,42 +6,47 @@ import LoginPage from "./pages/LoginPage";
 import CartPage from "./pages/CartPage";
 import Dashboard from "./pages/Dashboard";
 import useCart from "./hooks/useCart";
+import { AuthUserProvider } from "./context/AuthUserContext";
 
 function App() {
   const { cartItems, numbOfCartItems, onAdd, onRemove } = useCart();
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home numbOfCartItems={numbOfCartItems} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}/>
-          }
-        > 
-        </Route>
-        <Route 
-          path="/login" 
-          element={
-            <LoginPage numbOfCartItems={numbOfCartItems}/>
-          }>
-        </Route>
-        <Route
-          path="/cart"
-          element={
-            <CartPage cartItems={cartItems} numbOfCartItems={numbOfCartItems} onAdd={onAdd} onRemove={onRemove}/>
-          }
-        >
-        </Route>
-        <Route
-          path="/dashboard"
-          element={
-            <Dashboard numbOfCartItems={numbOfCartItems} />
-          }
-        >
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <AuthUserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                numbOfCartItems={numbOfCartItems}
+                cartItems={cartItems}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
+            }
+          ></Route>
+          <Route
+            path="/login"
+            element={<LoginPage numbOfCartItems={numbOfCartItems} />}
+          ></Route>
+          <Route
+            path="/cart"
+            element={
+              <CartPage
+                cartItems={cartItems}
+                numbOfCartItems={numbOfCartItems}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
+            }
+          ></Route>
+          <Route
+            path="/dashboard"
+            element={<Dashboard numbOfCartItems={numbOfCartItems} />}
+          ></Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthUserProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 function Cart(props) {
 
@@ -6,7 +6,7 @@ function Cart(props) {
   const taxPrice = itemsPrice * 0.22;
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
-  
+
   return (
       <div className="cart">
         {props.cartItems.length === 0 && <div>Carrello vuoto</div>}
@@ -19,7 +19,6 @@ function Cart(props) {
             <button onClick={() => props.onAdd(item)} className="add"> + </button>
           </div>
         ))}
-
         {props.cartItems.length !== 0 && (
           <>
             <hr/>

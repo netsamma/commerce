@@ -6,8 +6,7 @@ import useProducts from '../hooks/useProducts';
 
 function Home(props) {
 	const {products, loading} = useProducts()
-	// console.log(props);
-	
+		
 	return (
 		<>
 			<Navbar numbOfCartItems={props.numbOfCartItems}/>
