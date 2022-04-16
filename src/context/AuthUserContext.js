@@ -32,14 +32,15 @@ export const AuthUserProvider = ({ children }) => {
     //       setCurrentUser(null);
     //       setAuthIsLoading(false);
       setCurrentUser("Ignazio")
+      console.log(authIsLoading)
     }
   };
 
 
-  const handleLogout = async () => {
-    localStorage.removeItem("token");
-    setCurrentUser(null);
-  };
+  // const handleLogout = async () => {
+  //   localStorage.removeItem("token");
+  //   setCurrentUser(null);
+  // };
 
   const stateValues = {
     currentUser,

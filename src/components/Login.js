@@ -24,6 +24,7 @@ function Login() {
 	    setSuccess(true);
       console.log("Token: "+token);
       console.log("roles: "+roles);
+      console.log(success)
     } catch (error) {
       if (!error?.response) {
         setErrorMsg("No server response");
