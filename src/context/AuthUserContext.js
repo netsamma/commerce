@@ -7,6 +7,7 @@ export default AuthUserContext;
 export const AuthUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [authIsLoading, setAuthIsLoading] = useState(true);
+  console.log(authIsLoading)
 
   useEffect(() => {
     checkLogin();
@@ -32,7 +33,6 @@ export const AuthUserProvider = ({ children }) => {
     //       setCurrentUser(null);
     //       setAuthIsLoading(false);
       setCurrentUser("Ignazio")
-      console.log(authIsLoading)
     }
   };
 
