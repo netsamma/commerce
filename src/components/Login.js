@@ -7,8 +7,9 @@ function Login() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
-
+  const [auth, setAuth] = useState({});
+  
+  // Spostare in AuthContext
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUserName("");
@@ -20,11 +21,8 @@ function Login() {
       );
       let token = response.data.token;
       let roles = response.data.roles;
-      setAuth({ username, password, roles, token });
-	    setSuccess(true);
-      console.log("Token: "+token);
-      console.log("roles: "+roles);
-      console.log(success)
+      let success = true
+      setAuth({ username, password, roles, token, success });
     } catch (error) {
       if (!error?.response) {
         setErrorMsg("No server response");
@@ -41,11 +39,10 @@ function Login() {
 
   function setErrorMsg(msg) {}
 
-  function setAuth(auth) {}
-
   useEffect(() => {
     userRef.current.focus();
-  }, []);
+    console.log(auth)
+  }, [auth]);
 
   useEffect(() => {
     setErrMsg("");
@@ -53,7 +50,6 @@ function Login() {
 
   return (
     <div className="login-wrapper">
-      {/* {success ? "Login" : "Logout"} */}
       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>
         {errMsg}
       </p>

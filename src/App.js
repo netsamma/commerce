@@ -6,12 +6,12 @@ import LoginPage from "./pages/LoginPage";
 import CartPage from "./pages/CartPage";
 import Dashboard from "./pages/Dashboard";
 import useCart from "./hooks/useCart";
-import { AuthUserProvider } from "./context/AuthUserContext";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   const { cartItems, numbOfCartItems, onAdd, onRemove } = useCart();
   return (
-    <AuthUserProvider>
+    <AuthProvider>
       <BrowserRouter>
         <Routes>
           <Route
@@ -46,7 +46,7 @@ function App() {
           ></Route>
         </Routes>
       </BrowserRouter>
-    </AuthUserProvider>
+    </AuthProvider>
   );
 }
 
