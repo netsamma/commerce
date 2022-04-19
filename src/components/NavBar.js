@@ -7,7 +7,7 @@ import AuthContext from "../context/AuthContext";
 
 function Navbar(props) {
   
-  const {success, currentUser} = useContext(AuthContext)
+  const {success, currentUser, handleLogout} = useContext(AuthContext)
 
   return (
 
@@ -22,10 +22,15 @@ function Navbar(props) {
           </Link>
           <input className="navbar-search" placeholder="Ricerca prodotto"></input>
           <FaSearch className="navbar-icon" />
-          <Link to="/login" className="navbar-button">
-            {success?"Logout":"Login"}<br/>
-            <span style={{color: "red"}}>{currentUser}</span>
-          </Link>
+
+          {success?
+            (<Link to='' className="navbar-button" onClick={handleLogout}>
+              Logout <br/>
+              <span style={{color: "red"}}>{currentUser}</span>
+              </Link>):
+            (<Link to='/login' className="navbar-button" >Login </Link>)
+          }
+
           <Link to="/cart" className="navbar-button">
             <CartIcon numbOfCartItems={props.numbOfCartItems} />
           </Link>

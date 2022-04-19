@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 // import api from "./api";
 
 const AuthContext = createContext(null)
@@ -9,13 +9,14 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("Ignazio")
   const [token, setToken] = useState()
   const [success, setSuccess] = useState(true)
+  // const {handleLogin} =  useContext(AuthContext);
 
   const handleLogin = async () => {
     // const token = localStorage.getItem("token");
-    if (!token) {
-      setAuthIsLoading(true);
-      setSuccess(true);
-      setToken("uiuuuyy78y7y7")
+    setToken("uiuuuyy78y7y7");
+    setSuccess(true)
+    setAuthIsLoading(true);
+    // setSuccess(true);
     //       api
     //         .get(`users/${token}`)
     //         .then((response: { data: { user: UserType } }) => {
@@ -29,13 +30,13 @@ export const AuthProvider = ({ children }) => {
     //         });
     //     } else {
     //       setCurrentUser(null);
-      setAuthIsLoading(false);
-    }
+    setAuthIsLoading(false);
   };
 
   const handleLogout = async () => {
     localStorage.removeItem("token");
     setCurrentUser(null);
+    setSuccess(false)
   };
 
   let state = {
