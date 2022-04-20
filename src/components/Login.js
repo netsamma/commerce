@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import AuthContext from "../context/AuthContext";
 
 function Login() {
-  const {login, loginPending} = useContext(AuthContext);
+  const {login} = useContext(AuthContext);
   const userRef = useRef();
   const errRef = useRef();
   const [username, setUserName] = useState("");
