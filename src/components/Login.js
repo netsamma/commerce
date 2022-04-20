@@ -1,48 +1,24 @@
-import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import AuthContext from "../context/AuthContext";
 
 function Login() {
+  const {login} = useContext(AuthContext);
   const userRef = useRef();
   const errRef = useRef();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
-  const [auth, setAuth] = useState({});
-  
-  // Spostare in AuthContext
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setUserName("");
-    setPassword("");
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/login",
-        JSON.stringify({ username, password })
-      );
-      let token = response.data.token;
-      let roles = response.data.roles;
-      let success = true
-      setAuth({ username, password, roles, token, success });
-    } catch (error) {
-      if (!error?.response) {
-        setErrorMsg("No server response");
-      } else if (error.response?.status === 400) {
-        setErrorMsg("Username or Password mancante");
-      } else if (error.response?.status === 401) {
-        setErrorMsg("Utente non autorizzato");
-      } else {
-        setErrorMsg("Login fallito");
-      }
-      errRef.current.focus();
-    }
-  };
+  const [errMsg, setErrMsg] = useState(""); 
 
-  function setErrorMsg(msg) {}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(username, password);
+    setUserName('');
+    setPassword('');
+  }
 
   useEffect(() => {
     userRef.current.focus();
-    console.log(auth)
-  }, [auth]);
+  }, []);
 
   useEffect(() => {
     setErrMsg("");

@@ -7,7 +7,6 @@ function LoginPage(props) {
 	<>
 		<Navbar numbOfCartItems={props.numbOfCartItems}/>
 		<Login/>
-
 	</>
   )
 }

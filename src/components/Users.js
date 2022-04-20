@@ -11,7 +11,6 @@ function Users() {
 	const getUsers =  () => {
 		api.get(`users/`).then((response) => {
 				setUsers(response.data)
-				// console.log(response);
 			})
 			.catch((error) => {
 				console.log(error);

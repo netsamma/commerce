@@ -1,37 +1,49 @@
-import { createContext, useContext, useState } from "react";
-// import api from "./api";
+import axios from "axios";
+import { createContext, useState } from "react";
 
 const AuthContext = createContext(null)
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
-  const [authIsLoading, setAuthIsLoading] = useState(true)
-  const [currentUser, setCurrentUser] = useState("Ignazio")
-  const [token, setToken] = useState()
-  const [success, setSuccess] = useState(true)
-  // const {handleLogin} =  useContext(AuthContext);
+  const [currentUser, setCurrentUser] = useState("")
+  const [success, setSuccess] = useState(false)
+  const [loginPending, setLoginPending] = useState(false)
+  const [loginError, setLoginError] = useState(null)
 
-  const handleLogin = async () => {
-    // const token = localStorage.getItem("token");
-    setToken("uiuuuyy78y7y7");
-    setSuccess(true)
-    setAuthIsLoading(true);
-    // setSuccess(true);
-    //       api
-    //         .get(`users/${token}`)
-    //         .then((response: { data: { user: UserType } }) => {
-    //           console.log("CURRENT USER RES", response.data.user);
-    //           setCurrentUser(response.data.user);
-    //           setAuthIsLoading(false);
-    //         })
-    //         .catch((_error) => {
-    //           setCurrentUser(null);
-    //           setAuthIsLoading(false);
-    //         });
-    //     } else {
-    //       setCurrentUser(null);
-    setAuthIsLoading(false);
-  };
+  const login = async (username, password) => {
+	  setLoginPending(true);
+	  setSuccess(false);
+	  setLoginError(null);
+	  try {
+      const response = await axios.post(
+        "http://localhost:8080/login",
+        JSON.stringify({ username, password })
+      );
+      setSuccess(true)
+      setCurrentUser("Ignazio")
+      localStorage.setItem("token", response.data.token);
+    } catch (error) {
+      // if (!error?.response) {
+      //   setErrorMsg("No server response");
+      // } else if (error.response?.status === 400) {
+      //   setErrorMsg("Username or Password mancante");
+      // } else if (error.response?.status === 401) {
+      //   setErrorMsg("Utente non autorizzato");
+      // } else {
+      //   setErrorMsg("Login fallito");
+      // }
+      // errRef.current.focus();
+    }
+	}
+
+  const logout = () => {
+	  setLoginPending(false);
+	  setSuccess(false);
+    setCurrentUser(null);
+	  setLoginError(null);
+    localStorage.removeItem("token");
+	}
+
 
   const handleLogout = async () => {
     localStorage.removeItem("token");
@@ -39,13 +51,14 @@ export const AuthProvider = ({ children }) => {
     setSuccess(false)
   };
 
+
   let state = {
-    token: token,
     success: success,
     currentUser: currentUser,
-    authIsLoading: authIsLoading,
-    handleLogin: handleLogin,
-    handleLogout: handleLogout
+    loginError: loginError,
+    login: login,
+    handleLogout: handleLogout,
+    logout: logout
   }
 
   return (
