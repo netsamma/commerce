@@ -1,5 +1,5 @@
-import axios from "axios";
 import { createContext, useState } from "react";
+import axios from "axios";
 
 const AuthContext = createContext(null)
 export default AuthContext;
@@ -56,6 +56,7 @@ export const AuthProvider = ({ children }) => {
     success: success,
     currentUser: currentUser,
     loginError: loginError,
+    loginPending: loginPending,
     login: login,
     handleLogout: handleLogout,
     logout: logout
