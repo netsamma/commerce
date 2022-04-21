@@ -6,7 +6,11 @@ function Products(props) {
 			{props.loading ? (
 				<h4>Loading...</h4>) :
 				(props.products.map((item) => 
-					<Product key={item.product_id?item.product_id:item.id} product={item} onAdd={props.onAdd}/>
+					<Product 
+						key={item.product_id?item.product_id:item.id} 
+						product={item} 
+						onAdd={props.onAdd}
+					/>
 				)
 			)
 			}

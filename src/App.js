@@ -7,6 +7,7 @@ import CartPage from "./pages/CartPage";
 import Dashboard from "./pages/Dashboard";
 import useCart from "./hooks/useCart";
 import { AuthProvider } from "./context/AuthContext";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   const { cartItems, numbOfCartItems, onAdd, onRemove } = useCart();
@@ -44,6 +45,12 @@ function App() {
             path="/dashboard"
             element={<Dashboard numbOfCartItems={numbOfCartItems} />}
           ></Route>
+
+          <Route
+            path="/product/:id"
+            element={<ProductPage/>}
+          ></Route>
+
         </Routes>
       </BrowserRouter>
     </AuthProvider>
