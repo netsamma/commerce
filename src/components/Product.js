@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { StarRating } from './StarRating'
 
 function Product(props) {
 	return (
@@ -9,6 +10,7 @@ function Product(props) {
 				<h4 className="product-title">{props.product.title}</h4>
 			</Link>
 			<p className="product-price" > € {props.product.price}</p>
+			<StarRating />
 			<button className='product-button' onClick={() => props.onAdd(props.product)}>Aggiungi</button>
 		</div>
 	)
