@@ -1,3 +1,5 @@
+// DEPRECATED - New one it's available in zeroper (tictactoe) server project
+
 const express = require('express');
 const cors = require('cors')
 const app = express();
