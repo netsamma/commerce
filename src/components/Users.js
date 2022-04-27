@@ -1,5 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react'
-import api from '../api/api'
+import { url } from '../config/url';
 
 function Users() {
 	const [users, setUsers] = useState([])
@@ -7,14 +8,13 @@ function Users() {
 	React.useEffect(() => {
 		getUsers();
 	}, []);
-
-	const getUsers =  () => {
-		api.get(`users/`).then((response) => {
-				setUsers(response.data)
-			})
-			.catch((error) => {
-				console.log(error);
-		})
+	
+	const getUsers =  async () => {
+		const response = await axios.get(url.users+"?name="+"");	
+		if(response.status === 200){
+		  setUsers(response.data);
+		  console.log(response.data);
+		}
 	}
   return (
 	<div>
