@@ -13,7 +13,6 @@ function Users() {
 		const response = await axios.get(url.users+"?name="+"");	
 		if(response.status === 200){
 		  setUsers(response.data);
-		  console.log(response.data);
 		}
 	}
   return (
