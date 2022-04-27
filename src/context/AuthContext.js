@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [success, setSuccess] = useState(false)
   const [loginPending, setLoginPending] = useState(false)
   const [loginError, setLoginError] = useState(null)
+  const [errorMsg, setErrorMsg] = useState(null)
 
   const login = async (username, password) => {
 	  setLoginPending(true);
@@ -21,9 +22,13 @@ export const AuthProvider = ({ children }) => {
         JSON.stringify({ username, password })
       );
       setSuccess(true)
-      setCurrentUser("Ignazio")
+      setCurrentUser(username)
       localStorage.setItem("token", response.data.token);
     } catch (error) {
+      console.log(error.response.status);
+      if (error.response?.status === 404) {
+        setErrorMsg("Api non raggiungibile");
+      }  
       // if (!error?.response) {
       //   setErrorMsg("No server response");
       // } else if (error.response?.status === 400) {
@@ -46,20 +51,13 @@ export const AuthProvider = ({ children }) => {
 	}
 
 
-  const handleLogout = async () => {
-    localStorage.removeItem("token");
-    setCurrentUser(null);
-    setSuccess(false)
-  };
-
-
   let state = {
     success: success,
     currentUser: currentUser,
     loginError: loginError,
+    errorMsg: errorMsg,
     loginPending: loginPending,
     login: login,
-    handleLogout: handleLogout,
     logout: logout
   }
 
