@@ -9,7 +9,7 @@ import CartIcon from "./CartIcon";
 function Navbar(props) {
   
   const {success, currentUser, logout} = useContext(AuthContext)
-
+  
   return (
       <Nav>
         <FaFacebookF color="white" size="1.8em"/>
