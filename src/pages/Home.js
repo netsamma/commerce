@@ -5,11 +5,11 @@ import Cart from '../components/Cart';
 import useProducts from '../hooks/useProducts';
 
 function Home(props) {
-	const {products, loading} = useProducts()
-		
+	const {products, setFilter, loading} = useProducts()
+	
 	return (
 		<>
-			<Navbar numbOfCartItems={props.numbOfCartItems}/>
+			<Navbar numbOfCartItems={props.numbOfCartItems} setFilter={setFilter}/>
 			<div className="main">
 				<div className="products-wrapper">
 					<Products products={products} loading={loading} onAdd={props.onAdd}/>

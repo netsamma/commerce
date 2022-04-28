@@ -16,7 +16,7 @@ function Navbar(props) {
         <NavLink to="/"> Home </NavLink>
         <NavLink to="/dashboard"> Dashboard </NavLink>
         <NavSearch 
-          onChange={(e) => props.getProduct(e.target.value)} 
+          onChange={(e) => props.setFilter(e.target.value)} 
           placeholder="Ricerca prodotto">
         </NavSearch>
         <NavFaSearch color="white" size="1.8em"/>
