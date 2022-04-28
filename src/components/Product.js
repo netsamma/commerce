@@ -10,6 +10,7 @@ function Product(props) {
 				<h4 className="product-title">{props.product.title}</h4>
 			</Link>
 			<p className="product-price" > € {props.product.price}</p>
+			<p className="product-description" >{props.product.description}</p>
 			<StarRating />
 			<button className='product-button' onClick={() => props.onAdd(props.product)}>Aggiungi</button>
 		</div>

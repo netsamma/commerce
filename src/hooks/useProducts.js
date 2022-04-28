@@ -5,13 +5,13 @@ import { url } from '../config/url.js';
 const useProducts = () => {
 	const [loading, setLoading] = useState(false);
 	const [products, setProducts] = useState([]);
-	const [filter, setFilter] = useState("Pizza");
+	const [filter, setFilter] = useState("");
 
 	useEffect(
 		() => {
 			const loadProducts = async () => {
 				setLoading(true);
-				const response = await axios.get(url.products+"?title="+filter);	
+				const response = await axios.get(url.products+filter);	
 				if(response.status === 200){
 				  setProducts(response.data);
 				}  
