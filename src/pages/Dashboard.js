@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import Login from "../components/Login";
 import Navbar from "../components/NavBar";
-import { Sidebar } from "../components/Sidebar";
+import Sidebar from "../components/Sidebar";
 import Users from "../components/Users";
 import AuthContext from "../context/AuthContext";
 

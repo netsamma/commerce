@@ -2,16 +2,19 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const Sidebar = () => {
+const Sidebar = () => {
   return (
     <StyledSideBar>
       <StyledLink to="/"> Home </StyledLink>
-      <StyledLink to="/login"> Login </StyledLink>
-      <StyledLink to="/cart"> Carrello </StyledLink>
+      <StyledLink to="/layout/users"> Utenti </StyledLink>
+      <StyledLink to="/orders"> Ordini </StyledLink>
       <StyledLink to="/customer"> Clienti </StyledLink>
+      <StyledLink to="/layout/prova"> Prova </StyledLink>
     </StyledSideBar>
   )
 }
+
+export default Sidebar
 
 export const StyledSideBar = styled.div`
   display: flex;
