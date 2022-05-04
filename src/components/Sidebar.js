@@ -6,10 +6,10 @@ const Sidebar = () => {
   return (
     <StyledSideBar>
       <StyledLink to="/"> Home </StyledLink>
-      <StyledLink to="/layout/users"> Utenti </StyledLink>
-      <StyledLink to="/orders"> Ordini </StyledLink>
-      <StyledLink to="/customer"> Clienti </StyledLink>
-      <StyledLink to="/layout/prova"> Prova </StyledLink>
+      <StyledLink to="/dashboard/users"> Utenti </StyledLink>
+      <StyledLink to="/dashboard/products"> Prodotti </StyledLink>
+      <StyledLink to="/dashboard/orders"> Ordini </StyledLink>
+      <StyledLink to="/dashboard/customers"> Clienti </StyledLink>
     </StyledSideBar>
   )
 }

@@ -4,15 +4,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import CartPage from "./pages/CartPage";
-import Dashboard from "./pages/Dashboard";
 import useCart from "./hooks/useCart";
 import { AuthProvider } from "./context/AuthContext";
 import ProductPage from "./pages/ProductPage";
 import Users from "./components/Users";
-import { Layout } from "./components/Layout";
+import { Dashboard } from "./components/Dashboard";
+import Products from "./components/Products";
+import useProducts from "./hooks/useProducts";
+import { Orders } from "./components/Orders";
+import { Customers } from "./components/Customers";
 
 function App() {
   const { cartItems, numbOfCartItems, onAdd, onRemove } = useCart();
+  const {products, setFilter, loading} = useProducts();
+  
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -50,9 +55,11 @@ function App() {
           ></Route>
 
 
-          <Route path="/layout" element={<Layout />}>
-            <Route path="prova" element={<h1>Prova</h1>} />
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="orders" element={<Orders />} />
             <Route path="users" element={<Users/>} />
+            <Route path="products" element={<Products products={products}/>} />
+            <Route path="customers" element={<Customers/>} />
           </Route>
 
 

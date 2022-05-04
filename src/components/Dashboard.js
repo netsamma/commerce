@@ -4,7 +4,7 @@ import Footer from './Footer'
 import Navbar from './NavBar'
 import Sidebar from './Sidebar'
 
-export const Layout = () => {
+export const Dashboard = () => {
   return (
 	<div> 
 		<Navbar/>
@@ -16,6 +16,7 @@ export const Layout = () => {
 	</div>
   )
 }
+
 
 const Main = styled.div`
 	display: flex;
