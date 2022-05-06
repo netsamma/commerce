@@ -13,6 +13,8 @@ import Products from "./components/Products";
 import useProducts from "./hooks/useProducts";
 import { Orders } from "./components/Orders";
 import { Customers } from "./components/Customers";
+import { Register } from "./components/Register";
+import { Public } from "./components/Public";
 
 function App() {
   const { cartItems, numbOfCartItems, onAdd, onRemove } = useCart();
@@ -35,6 +37,7 @@ function App() {
           <Route path="/login"
             element={<LoginPage numbOfCartItems={numbOfCartItems} />}
           />
+
           <Route path="/cart"
             element={
               <CartPage
@@ -45,21 +48,20 @@ function App() {
               />
             }
           />
-          <Route path="/dashboard"
-            element={<Dashboard numbOfCartItems={numbOfCartItems} />}
-          >
-          </Route>
 
           <Route path="/product/:id"
             element={<ProductPage/>}
           ></Route>
 
-
-          <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="/dashboard" element={<Dashboard numbOfCartItems={numbOfCartItems}/>}>
             <Route path="orders" element={<Orders />} />
             <Route path="users" element={<Users/>} />
-            <Route path="products" element={<Products products={products}/>} />
+            <Route path="products" element={<Products products={products} inline={true}/>} />
             <Route path="customers" element={<Customers/>} />
+          </Route>
+
+          <Route path="/" element={<Public/>}>
+            <Route path="register" element={<Register />} />
           </Route>
 
 

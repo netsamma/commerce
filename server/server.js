@@ -13,4 +13,13 @@ app.use('/login', (req, res) => {
   });
 });
 
+app.use('/users/details', (req, res) => {
+  console.log(req);
+  res.send({
+    name: 'Prova',
+    mail: "prova@gmail.com",
+    roles: [1,4]
+  });
+});
+
 app.listen(8080, () => console.log('API is running on http://localhost:8080/login'));

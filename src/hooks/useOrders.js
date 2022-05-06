@@ -2,18 +2,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { url } from '../config/url.js';
 
-const useProducts = () => {
+const useOrders = () => {
 	const [loading, setLoading] = useState(false);
-	const [products, setProducts] = useState([]);
+	const [orders, setOrders] = useState([]);
 	const [filter, setFilter] = useState(""); 
 	
 	useEffect(
 		() => {
-			const loadProducts = async () => {
+			const loadOrders = async () => {
 				setLoading(true);
-				const response = await axios.get(url.products+filter);	
+				const response = await axios.get(url.orders+filter);	
 				if(response.status === 200){
-				  setProducts(response.data);
+				  setOrders(response.data);
 				}  
 				setLoading(false);
 			}		
@@ -21,7 +21,7 @@ const useProducts = () => {
 		}, [filter]
 	)
 
-	return {loading, products, setFilter}
+	return {loading, orders, setFilter}
 }
 
-export default useProducts
+export default useOrders

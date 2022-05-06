@@ -12,5 +12,5 @@ export default Footer
 const StyledFooter = styled.div`
 	display: flex;
 	padding: 20px;
-	background-color: darkblue;
+	background-color: black;
 `

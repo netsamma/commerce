@@ -49,7 +49,7 @@ function Login() {
         />
         <button>Login</button>
         <p>
-          <a href="/signup">Registrati</a>
+          <a href="/register">Registrati</a>
         </p>
       </form>
     </div>

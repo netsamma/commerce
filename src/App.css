@@ -1,5 +1,7 @@
 *{
-  box-sizing: border-box
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 :root{
@@ -15,47 +17,6 @@
 .main{
   display: flex;
   flex-direction: row;
-}
-
-.products-wrapper{
-  width: 75%;
-  background: var(--peach);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.product-card{
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-  margin: 20px;
-  background: var(--mainWhite);
-  border-radius: 20px;
-}
-
-
-.product-image{
-  width: 100%;
-}
-
-.product-button{
-  margin-top: auto;
-	border: none;
-	background-color:skyblue;
-	padding: 20px;
-	font-family: "Arial";
-	font-size: 15px;
-	cursor: pointer;
-	border-radius: 10px;
-};
-
-
-.item_row{
-	margin-bottom: 10px;
-}
-
-.item{
-	margin-right: 20px;
 }
 
 

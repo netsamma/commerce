@@ -2,14 +2,12 @@ import { Outlet } from 'react-router-dom'
 import styled from 'styled-components'
 import Footer from './Footer'
 import Navbar from './NavBar'
-import Sidebar from './Sidebar'
 
-export const Dashboard = () => {
+export const Public = () => {
   return (
 	<div> 
 		<Navbar/>
 		<Main>
-			<Sidebar/>
 			<Outlet/>
 		</Main>
 		<Footer />
@@ -22,5 +20,4 @@ const Main = styled.div`
 	display: flex;
 	padding: 20px;
 	gap: 50px;
-	min-height: 100vh;
 `
