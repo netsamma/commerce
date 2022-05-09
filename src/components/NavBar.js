@@ -30,7 +30,7 @@ function Navbar(props) {
         <NavCart to="/cart">
           <CartIcon numbOfCartItems={props.numbOfCartItems} />
         </NavCart>
-        <NavHambBars/>
+        <NavHambBars color="white" size="1.8em"/>
       </Nav>
   );
 }
@@ -76,8 +76,6 @@ const NavFaSearch = styled(FaSearch)`
 `
 
 const NavHambBars = styled(FaBars)`
-  color: white;
-  font-size: 1.5em;
   margin: 0 20px;
   @media screen and (min-width: 768px){
     display: none;

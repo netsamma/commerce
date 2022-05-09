@@ -1,0 +1,41 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Borsa in pelle",
+      "descrizione": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi beatae molestias sunt magni iure sapiente! Possimus cumque rerum sed, voluptates vitae delectus"
+    },
+    {
+      "id": 2,
+      "title": "Scarpe in camoscio",
+      "descrizione": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi beatae molestias sunt magni iure sapiente! Possimus cumque rerum sed, voluptates vitae delectus"
+    },
+    {
+      "id": 3,
+      "title": "Cintura in lamè",
+      "descrizione": "Cintura Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi beatae molestias sunt magni iure sapiente! Possimus cumque rerum sed, voluptates vitae delectus"
+    },
+    {
+      "title": "Notebook Apple",
+      "descrizione": "PC Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi beatae molestias sunt magni iure sapiente! Possimus cumque rerum sed, voluptates vitae delectus",
+      "id": 4
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -11,12 +11,8 @@ function Home(props) {
 		<>
 			<Navbar numbOfCartItems={props.numbOfCartItems} setFilter={setFilter}/>
 			<div className="main">
-				<div className="products-wrapper">
-					<Products products={products} loading={loading} onAdd={props.onAdd}/>
-				</div>
-				<div className="cart-wrapper">
-					<Cart cartItems={props.cartItems} onAdd={props.onAdd} onRemove={props.onRemove}/>
-				</div>			
+				<Products products={products} loading={loading} onAdd={props.onAdd}/>
+				<Cart cartItems={props.cartItems} onAdd={props.onAdd} onRemove={props.onRemove}/>
 			</div>
 		</>
 	)

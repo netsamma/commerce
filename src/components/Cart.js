@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components';
 
 function Cart(props) {
 
@@ -8,7 +9,7 @@ function Cart(props) {
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
 
   return (
-      <div className="cart">
+      <StyledCart>
         {props.cartItems.length === 0 && <div>Carrello vuoto</div>}
         {props.cartItems.map((item) => (
           <div key={item.product_id?item.product_id:item.id} className="item_row">
@@ -41,8 +42,16 @@ function Cart(props) {
 
           </>
         )}
-      </div>
+      </StyledCart>
   );
 }
 
 export default Cart
+
+
+const StyledCart = styled.div`
+	padding: 20px;
+  width: 25%;
+  background: var(--lightBlue);
+  padding: 30px;
+`

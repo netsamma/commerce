@@ -11,7 +11,7 @@ const useProducts = () => {
 		() => {
 			const loadProducts = async () => {
 				setLoading(true);
-				const response = await axios.get(url.products+filter);	
+				const response = await axios.get(url.productsByTitle+filter);	
 				if(response.status === 200){
 				  setProducts(response.data);
 				}  
