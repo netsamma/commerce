@@ -13,7 +13,7 @@ function Navbar(props) {
   const handleFilter = (filter) =>{
     if(filter.length > 2) {
       props.setFilter(filter)
-    }else if (filter.length == 2){
+    }else if (filter.length === 2){
       props.setFilter("")
     }
   }
