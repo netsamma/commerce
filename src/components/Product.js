@@ -15,10 +15,17 @@ function Product(props) {
 			{props.inline ? "" : 
 				<StarRating />}
 			{props.inline ? 
-				<button 
-					className='product-button' 
-					onClick={() => props.edit()}>Edit
-				</button> 
+				<>
+					<button 
+						className='product-button' 
+						onClick={() => props.edit()}>Edit
+					</button> 
+					<button 
+						className='product-button' 
+						onClick={() => props.delete(props.product.id)}>Delete
+					</button>
+				</> 
+				
 				: 
 				<button 
 				 	className='product-button' 

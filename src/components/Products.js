@@ -1,13 +1,28 @@
 import Product from "./Product";
 import styled from "styled-components";
 import { FaPlus } from "react-icons/fa";
+import axios from "axios";
+import {url} from "../config/url"
 
 const addProduct = () => {
-  alert("Aggiungi prodotto");
+  const article = { title: 'Axios POST Request Example' };
+  axios.post(url.products, article)
+    .then(response => console.log(response))
+    .catch(error => {
+        console.error('There was an error!', error);
+    });
 };
 
 const editProduct = () => {
 	alert("Modifica prodotto");
+};
+
+const deleteProduct = (id) => {
+  axios.delete(url.products+'/'+id)
+    .then(response => console.log(response))
+    .catch(error => {
+      console.error('There was an error!', error);
+  });
 };
 
 function Products(props) {
@@ -30,7 +45,8 @@ function Products(props) {
               product={item}
               onAdd={props.onAdd}
               inline={props.inline}
-			  edit = {editProduct}
+              edit = {editProduct}
+              delete = {deleteProduct}
             />
           ))}
         </>
