@@ -1,13 +1,11 @@
 const baseUrl = "http://162.19.65.77:8080";
+const baseUrlMock = 'https://625b0e12398f3bc782a9b2a0.mockapi.io/api/';
 
 export const url = {  
-
 	users: 'https://625b0e12398f3bc782a9b2a0.mockapi.io/api/users',
 	orders: 'https://625b0e12398f3bc782a9b2a0.mockapi.io/api/orders',
-
-	products: baseUrl + "/products",
+	products: baseUrlMock + "/products",
 	authenticate: baseUrl + "/authenticate",
-	
 };
 
 
