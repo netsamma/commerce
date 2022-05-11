@@ -3,11 +3,13 @@ import styled from 'styled-components'
 import Footer from './Footer'
 import Navbar from './NavBar'
 import Sidebar from './Sidebar'
+import useProducts from '../hooks/useProducts';
 
-export const Dashboard = () => {
+export const Dashboard = (props) => {
+  const {setFilter} = useProducts()
   return (
 	<div> 
-		<Navbar/>
+		<Navbar numbOfCartItems={props.numbOfCartItems} setFilter={setFilter}/>
 		<Main>
 			<Sidebar/>
 			<Outlet/>

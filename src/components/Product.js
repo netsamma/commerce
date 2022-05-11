@@ -25,7 +25,6 @@ function Product(props) {
 						onClick={() => props.delete(props.product.id)}>Delete
 					</button>
 				</> 
-				
 				: 
 				<button 
 				 	className='product-button' 

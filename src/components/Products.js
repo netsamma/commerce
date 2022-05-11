@@ -5,7 +5,7 @@ import axios from "axios";
 import {url} from "../config/url"
 
 const addProduct = () => {
-  const article = { title: 'Axios POST Request Example' };
+  const article = { title: 'Prodotto numero 2' };
   axios.post(url.products, article)
     .then(response => console.log(response))
     .catch(error => {

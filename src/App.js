@@ -15,6 +15,7 @@ import { Orders } from "./components/Orders";
 import { Customers } from "./components/Customers";
 import { Register } from "./components/Register";
 import { Public } from "./components/Public";
+import Form from "./components/Form";
 
 function App() {
   const { cartItems, numbOfCartItems, onAdd, onRemove } = useCart();
@@ -54,9 +55,10 @@ function App() {
           ></Route>
 
           <Route path="/dashboard" element={<Dashboard numbOfCartItems={numbOfCartItems}/>}>
+            <Route path="add-product" element={<Form />}/>
             <Route path="orders" element={<Orders />} />
             <Route path="users" element={<Users/>} />
-            <Route path="products" element={<Products products={products} inline={true}/>} />
+            <Route path="products" element={<Products setFilter={setFilter} products={products} inline={true}/>} />
             <Route path="customers" element={<Customers/>} />
           </Route>
 
