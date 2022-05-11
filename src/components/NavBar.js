@@ -9,6 +9,14 @@ import CartIcon from "./CartIcon";
 function Navbar(props) {
   
   const {success, currentUser, logout} = useContext(AuthContext)
+
+  const handleFilter = (filter) =>{
+    if(filter.length > 2) {
+      props.setFilter(filter)
+    }else if (filter.length == 2){
+      props.setFilter("")
+    }
+  }
   
   return (
       <Nav>
@@ -16,8 +24,11 @@ function Navbar(props) {
         <NavLink to="/"> Home </NavLink>
         <NavLink to="/dashboard"> Dashboard </NavLink>
         <NavSearch 
-          onChange={(e) => props.setFilter(e.target.value)} 
-          placeholder="Ricerca prodotto">
+          //onChange={(e) => {e.target.value.length>2?props.setFilter(e.target.value):props.setFilter("")}} 
+          onChange={(e) => handleFilter(e.target.value)} 
+
+          placeholder="Ricerca prodotto"
+          type="search">
         </NavSearch>
         <NavFaSearch color="white" size="1.8em"/>
         {success?

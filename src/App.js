@@ -30,6 +30,9 @@ function App() {
               <Home
                 numbOfCartItems={numbOfCartItems}
                 cartItems={cartItems}
+                products = {products}
+                setFilter = {setFilter}
+                loading = {loading}
                 onAdd={onAdd}
                 onRemove={onRemove}
               />

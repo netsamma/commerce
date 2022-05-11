@@ -2,16 +2,14 @@ import React from 'react'
 import Navbar from '../components/NavBar'
 import Products from '../components/Products';
 import Cart from '../components/Cart';
-import useProducts from '../hooks/useProducts';
 
 function Home(props) {
-	const {products, setFilter, loading} = useProducts()
-	
+	console.log("Start home");
 	return (
 		<>
-			<Navbar numbOfCartItems={props.numbOfCartItems} setFilter={setFilter}/>
+			<Navbar numbOfCartItems={props.numbOfCartItems} setFilter={props.setFilter}/>
 			<div className="main">
-				<Products products={products} loading={loading} onAdd={props.onAdd}/>
+				<Products products={props.products} loading={props.loading} onAdd={props.onAdd}/>
 				<Cart cartItems={props.cartItems} onAdd={props.onAdd} onRemove={props.onRemove}/>
 			</div>
 		</>
