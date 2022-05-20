@@ -9,7 +9,7 @@ function Cart(props) {
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
 
   return (
-      <StyledCart>
+      <StyledCart alwaysVisible={props.alwaysVisible}>
         {props.cartItems.length === 0 && <div>Carrello vuoto</div>}
         {props.cartItems.map((item) => (
           <div key={item.product_id?item.product_id:item.id} className="item_row">
@@ -50,8 +50,10 @@ export default Cart
 
 
 const StyledCart = styled.div`
+  width: ${props => props.alwaysVisible ? "100%":"30%"};
 	padding: 20px;
-  width: 25%;
   background: var(--lightBlue);
-  padding: 30px;
+  @media (max-width: 600px) {
+    display: ${props => props.alwaysVisible === true ? "block" : "none"};
+  }
 `
