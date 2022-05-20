@@ -1,53 +1,52 @@
-import React, { useContext } from "react";
-import { FaBars, FaFacebookF, FaSearch } from "react-icons/fa";
+import React, { useContext, useState } from "react";
+import {FaFacebookF, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import AuthContext from "../context/AuthContext";
 import CartIcon from "./CartIcon";
 
-
 function Navbar(props) {
-  
-  const {success, currentUser, logout} = useContext(AuthContext)
+  const { success, currentUser, logout } = useContext(AuthContext);
+  const [verticalMenu, setVerticalMenu] = useState(false);
 
-  const handleFilter = (filter) =>{
-    if(filter.length > 2) {
-      props.setFilter(filter)
-    }else if (filter.length === 2){
-      props.setFilter("")
+  const handleFilter = (filter) => {
+    if (filter.length > 2) {
+      props.setFilter(filter);
+    } else if (filter.length === 2) {
+      props.setFilter("");
     }
-  }
-  
-  return (
-      <Nav>
-        <FaFacebookF color="white" size="1.8em"/>
-        <NavLink to="/"> Home </NavLink>
-        <NavLink to="/dashboard"> Dashboard </NavLink>
-        <NavSearch 
-          //onChange={(e) => {e.target.value.length>2?props.setFilter(e.target.value):props.setFilter("")}} 
-          onChange={(e) => handleFilter(e.target.value)} 
+  };
 
-          placeholder="Ricerca prodotto"
-          type="search">
-        </NavSearch>
-        <NavFaSearch color="white" size="1.8em"/>
-        {success?
-          (<NavLink to='' onClick={logout}> 
-            Logout <br/>
-            <span style={{color: "red"}}>{currentUser}</span>
-            </NavLink>):
-          (<NavLink to='/login'>Login </NavLink>)
-        }
-        <NavCart to="/cart">
-          <CartIcon numbOfCartItems={props.numbOfCartItems} />
-        </NavCart>
-        <NavHambBars color="white" size="1.8em"/>
-      </Nav>
+  return (
+    <Nav>
+      <Link to="/"><FaFacebookF to="/" color="white" size="1.8em" /></Link>
+      <NavLink to="/dashboard"> Dashboard </NavLink>
+      <NavSearch
+        //onChange={(e) => {e.target.value.length>2?props.setFilter(e.target.value):props.setFilter("")}}
+        onChange={(e) => handleFilter(e.target.value)}
+        placeholder="Ricerca prodotto"
+        type="search"
+      ></NavSearch>
+      <NavFaSearch color="white" size="1.8em" />
+      {success ? (
+        <NavLink to="" onClick={logout}>
+          Logout <br />
+          <span style={{ color: "red" }}>{currentUser}</span>
+        </NavLink>
+      ) : (
+        <NavLink to="/login">Login </NavLink>
+      )}
+      <NavCart to="/cart">
+        <CartIcon numbOfCartItems={props.numbOfCartItems} />
+      </NavCart>
+      <HambMenu onClick={()=>setVerticalMenu((curr) => !curr)}>
+        {verticalMenu?<>&#10005;</>:<>&#8801;</>}
+      </HambMenu>
+    </Nav>
   );
 }
 
 export default Navbar;
-
 
 const Nav = styled.nav`
   background: black;
@@ -55,7 +54,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
+`;
 
 const NavLink = styled(Link)`
   color: azure;
@@ -66,10 +65,10 @@ const NavLink = styled(Link)`
     background-color: black;
     color: #fac136;
   }
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     display: none;
   }
-`
+`;
 
 const NavSearch = styled.input`
   height: 50%;
@@ -77,18 +76,22 @@ const NavSearch = styled.input`
   margin: 0 20px;
   padding: 10px;
   font-size: 1.2em;
-`
+`;
 
 const NavCart = styled(Link)`
   margin: 0 20px;
-`
+`;
 const NavFaSearch = styled(FaSearch)`
   margin: 0 20px;
-`
+`;
 
-const NavHambBars = styled(FaBars)`
+const HambMenu = styled.button`
   margin: 0 20px;
-  @media screen and (min-width: 768px){
+  font-size: 2.1em;
+  background-color: black;
+  color: white;
+  border: none;
+  @media screen and (min-width: 768px) {
     display: none;
   }
-`
+`;

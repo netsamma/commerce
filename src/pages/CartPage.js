@@ -6,13 +6,12 @@ function CartPage(props) {
   return (
     <>
       <Navbar numbOfCartItems={props.numbOfCartItems} />
-      <div className="cart-wrapper">
-          <Cart
-            cartItems={props.cartItems}
-            onAdd={props.onAdd}
-            onRemove={props.onRemove}
-          />
-      </div>
+      <Cart
+        cartItems={props.cartItems}
+        onAdd={props.onAdd}
+        onRemove={props.onRemove}
+        alwaysVisible={true}
+      />
     </>
   );
 }

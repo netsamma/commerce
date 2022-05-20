@@ -58,7 +58,10 @@ function Products(props) {
 export default Products;
 
 const StyledProducts = styled.div`
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(4, 1fr);
   display: ${(props) => (props.inline ? "flex" : "grid")};
   flex-direction: ${(props) => (props.inline ? "column" : "row")};
+  @media (max-width: 900px) {
+     grid-template-columns: repeat(2, 1fr);
+  }
 `;
