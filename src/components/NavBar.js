@@ -87,7 +87,7 @@ const NavFaSearch = styled(FaSearch)`
 
 const HambMenu = styled.button`
   margin: 0 20px;
-  font-size: 2.1em;
+  font-size: 1.8em;
   background-color: black;
   color: white;
   border: none;

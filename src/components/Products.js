@@ -5,9 +5,22 @@ import axios from "axios";
 import {url} from "../config/url"
 
 const addProduct = () => {
-  const article = { title: 'Prodotto numero 2' };
-  axios.post(url.products, article)
-    .then(response => console.log(response))
+  const article = { 
+    title: 'Prodotto numero 2',
+    price: 20.00,
+    stock: 20,
+    store_id: 1,
+    vat_id: 1,
+    image: "http://162.19.65.77:8081/lorem-256x256.png"
+  };
+
+  axios.post(url.products, article,
+    {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("token"))
+      }
+    })
+    .then(response => {console.log(response); window.location.reload()})
     .catch(error => {
         console.error('There was an error!', error);
     });
@@ -18,8 +31,14 @@ const editProduct = () => {
 };
 
 const deleteProduct = (id) => {
-  axios.delete(url.products+'/'+id)
-    .then(response => console.log(response))
+  axios.delete(url.products+'/'+"208",
+  {
+    headers: {
+      'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("token"))
+    }
+  }
+  )
+    .then(response => {console.log(response); window.location.reload()})
     .catch(error => {
       console.error('There was an error!', error);
   });

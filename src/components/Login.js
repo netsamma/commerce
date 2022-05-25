@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import AuthService from "../services/auth.service";
 
 function Login() {
   const {login} = useContext(AuthContext);
@@ -7,14 +9,30 @@ function Login() {
   const errRef = useRef();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState(""); 
+  const [errMsg, setErrMsg] = useState("");
+  
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    login(username, password);
-    setUserName('');
-    setPassword('');
-  }
+
+    AuthService.login(username, password)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        setErrMsg(error.response.status);
+        if (!error?.response) {
+          alert("No server response");
+        } else if (error.response?.status === 400) {
+          alert("Username or Password mancante");
+        } else if (error.response?.status === 401) {
+          alert("Username o password errati");
+        } else {
+          alert("Login fallito");
+        }
+      });
+  };
 
   useEffect(() => {
     userRef.current.focus();
@@ -30,7 +48,7 @@ function Login() {
         {errMsg}
       </p>
       <h1>Accedi</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <label htmlFor="username">Username</label>
         <input
           type="text"

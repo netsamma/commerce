@@ -12,6 +12,7 @@ function Product(props) {
 			</Link>
 			<p className="product-price" > € {props.product.price}</p>
 			<p className="product-description" >{props.product.description}</p>
+			<p className="product-stock" >Stock: {props.product.stock}</p>
 			{props.inline ? "" : 
 				<StarRating />}
 			{props.inline ? 

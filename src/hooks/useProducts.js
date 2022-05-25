@@ -16,8 +16,8 @@ const useProducts = () => {
       );
       if (response.status === 200) {
         setProducts(response.data);
-		console.log("Chiamata");
-	}
+		    console.log("Chiamata");
+	    }
       setLoading(false);
     };
     loadProducts();

@@ -18,7 +18,10 @@ function Users() {
   return (
 	<div>
 		{users.map((user)=>{
-			return <h3 key={user.id}>{user.name}</h3>
+			return <>
+				<h3 key={user.id}>{user.name} {user.age}</h3>
+				<img src={user.avatar} alt="" />
+			</>
 		})}
 	</div>
   )
