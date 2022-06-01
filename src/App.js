@@ -19,7 +19,7 @@ import Form from "./components/Form";
 
 function App() {
   const { cartItems, numbOfCartItems, onAdd, onRemove } = useCart();
-  const {products, setFilter, loading} = useProducts();
+  const {products, setFilter, loading, addProduct} = useProducts();
   
   return (
     <AuthProvider>
@@ -35,6 +35,7 @@ function App() {
                 loading = {loading}
                 onAdd={onAdd}
                 onRemove={onRemove}
+                addPrroduct={addProduct}
               />
             }
           ></Route>

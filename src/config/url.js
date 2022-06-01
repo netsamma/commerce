@@ -1,11 +1,20 @@
-const baseUrl = "http://162.19.65.77:8080";
-const baseUrlMock = 'https://625b0e12398f3bc782a9b2a0.mockapi.io/api/';
+//const localhost = "http://162.19.65.77:8080";
+
+const localhost = "http://localhost:4000";
+const mock = 'https://625b0e12398f3bc782a9b2a0.mockapi.io/api';
+// const vps = "http://162.19.65.77:8080";
+
+const users_mock = mock + '/users';
+// const orders_mock = mock + '/orders';
+const products_mock = mock + '/products';
+// const users_vps = vps + '/users';
+// const login_vps = vps + '/authenticate';
+const login_localhost = localhost + '/login';	
 
 export const url = {  
-	users: 'https://625b0e12398f3bc782a9b2a0.mockapi.io/api/users',
-	orders: 'https://625b0e12398f3bc782a9b2a0.mockapi.io/api/orders',
-	products: baseUrl + "/products",
-	authenticate: baseUrl + "/authenticate",
+	users: users_mock,
+	products: products_mock,
+	login: login_localhost
 };
 
 

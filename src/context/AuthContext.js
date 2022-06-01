@@ -7,33 +7,34 @@ export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("");
-  const [success, setSuccess] = useState(false);
   const [loginPending, setLoginPending] = useState(false);
   const [loginError, setLoginError] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  const login = async (username, password) => {
-    setLoginPending(true);
-    setSuccess(false);
-    setLoginError(null);
-    try {
-      const response = await axios.post(
-        url.authenticate,
-        JSON.stringify({ username, password })
-      );
-      setSuccess(true);
-      setCurrentUser(username);
-      localStorage.setItem("token", response.data.token);
-      const userDetails = await getUserDetails(response.data.token);
-      console.log(userDetails);
-    } catch (error) {
-      console.log(error.response);
-      if (error.response?.status === 404) {
-        setErrorMsg("Api non raggiungibile");
-      }
-    }
+  const login = (username, password) => {
+    return axios
+      .post(url.login, {
+        username,
+        password,
+      })
+      .then((response) => {
+        if (response.data.token) {
+          localStorage.setItem("token", JSON.stringify(response.data.token));
+          localStorage.setItem("username", JSON.stringify(response.data.username));
+          setCurrentUser(response.data.username)
+        }
+        return response.data;
+      });
   };
 
+  const logout = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+    setCurrentUser(null);
+    setLoginError(null);
+    //window.location.replace("http://162.19.65.77/");
+  };
+  
   const getUserDetails = async (token) => {
     try {
       const user_details = await axios.get(
@@ -57,22 +58,16 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  const logout = () => {
-    setLoginPending(false);
-    setSuccess(false);
-    setCurrentUser(null);
-    setLoginError(null);
-    localStorage.removeItem("token");
-  };
-
   let state = {
-    success: success,
     currentUser: currentUser,
     loginError: loginError,
+    setLoginError: setLoginError,
     errorMsg: errorMsg,
     loginPending: loginPending,
+    setLoginPending: setLoginPending,
     login: login,
-    logout: logout
+    logout: logout,
+    getUserDetails: getUserDetails
   };
 
   return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;

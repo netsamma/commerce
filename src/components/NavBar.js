@@ -6,7 +6,7 @@ import AuthContext from "../context/AuthContext";
 import CartIcon from "./CartIcon";
 
 function Navbar(props) {
-  const { success, currentUser, logout } = useContext(AuthContext);
+  const {currentUser, logout } = useContext(AuthContext);
   const [verticalMenu, setVerticalMenu] = useState(false);
 
   const handleFilter = (filter) => {
@@ -28,7 +28,7 @@ function Navbar(props) {
         type="search"
       ></NavSearch>
       <NavFaSearch color="white" size="1.8em" />
-      {success ? (
+      {currentUser ? (
         <NavLink to="" onClick={logout}>
           Logout <br />
           <span style={{ color: "red" }}>{currentUser}</span>
