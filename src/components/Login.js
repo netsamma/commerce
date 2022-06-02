@@ -1,26 +1,50 @@
-import React, {useEffect, useRef, useState } from "react";
-import {useContext} from "react"; 
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import { url } from "../config/url";
 
 function Login() {
-  const {login} = useContext(AuthContext);
+  const {
+    currentUser,
+    setCurrentUser,
+    token,
+    setToken,
+    //roles,
+    setRoles
+  } = useContext(AuthContext);
+
   const userRef = useRef();
   const errRef = useRef();
   const navigate = useNavigate();
-  
+
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  
-  const handleLogin = (e) => {
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    login(username, password)
-    .then((response) => {
-      console.log(response);
-      navigate("/")
-    })
-    .catch((error) => {
+    try {
+      const response = await axios.post(
+        url.login,
+        {
+          username,
+          password,
+        },
+        {
+          headers: { "Content-type": "application/json" },
+          // withCredentials: true
+        }
+      );
+      setToken(response?.data?.token);
+      setRoles(response?.data?.roles);
+      setCurrentUser(username);
+      localStorage.setItem("token", token);
+      localStorage.setItem("username", currentUser);
+      navigate('/');
+    } catch (error) {
+      console.log(error);
       setErrMsg(error.response);
       if (!error?.response) {
         alert("No server response");
@@ -31,9 +55,7 @@ function Login() {
       } else {
         alert("Login fallito");
       }
-      console.log(error);
-      navigate("/login")
-    });
+    }
   };
 
   useEffect(() => {
@@ -77,3 +99,9 @@ function Login() {
 }
 
 export default Login;
+
+/* 
+  Source
+  https://www.youtube.com/watch?v=X3qyxo_UTR4
+  https://github.com/gitdagray/react_login_form
+*/
