@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import CartPage from "./pages/CartPage";
 import useCart from "./hooks/useCart";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./context/authContext";
 import ProductPage from "./pages/ProductPage";
 import Users from "./components/Users";
 import { Dashboard } from "./components/Dashboard";

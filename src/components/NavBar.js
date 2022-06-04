@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import {FaFacebookF, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import AuthContext from "../context/AuthContext";
+import AuthContext from "../context/authContext";
 import CartIcon from "./CartIcon";
 
 function Navbar(props) {

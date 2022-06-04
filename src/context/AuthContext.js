@@ -1,5 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useState} from "react";
 import axios from "axios";
+import AuthService from "../services/authService";
 
 const AuthContext = createContext(null);
 export default AuthContext;
@@ -9,8 +10,25 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [roles, setRoles] = useState([]);
   const [loginPending, setLoginPending] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [loginError, setLoginError] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errMsg, setErrMsg] = useState(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    AuthService.login(username, password)
+    .then((response) => {
+      console.log("Context then: "+JSON.stringify(response))
+      setCurrentUser(response.username)
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("username", currentUser);
+    })
+    .catch((error) => {
+        console.log(error)
+    });
+  };
 
   const logout = () => {
     localStorage.removeItem("username");
@@ -38,13 +56,17 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.log(error.response);
       if (error.response?.status === 404) {
-        setErrorMsg("Api non raggiungibile");
+        setErrMsg("Api non raggiungibile");
       }
     }
   }
 
   let state = {
     currentUser,
+    username,
+    setUsername,
+    password,
+    setPassword,
     setCurrentUser,
     token,
     setToken,
@@ -52,11 +74,13 @@ export const AuthProvider = ({ children }) => {
     setRoles,
     loginError,
     setLoginError,
-    errorMsg,
+    errMsg,
+    setErrMsg,
     loginPending,
     setLoginPending,
     getUserDetails,
-    logout
+    logout,
+    handleLogin
   };
 
   return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;

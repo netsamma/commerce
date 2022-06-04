@@ -12,6 +12,7 @@ const products_mock = mock + '/products';
 const login_localhost = localhost + '/login';	
 
 export const url = {  
+	baseUrl: localhost,
 	users: users_mock,
 	products: products_mock,
 	login: login_localhost
